@@ -1,5 +1,5 @@
 import json
-import boto3
+from datetime import datetime
 
 # import requests
 
@@ -33,11 +33,13 @@ def lambda_handler(event, context):
     #     print(e)
 
     #     raise e
-
+    now = datetime.now()
+    current_time = now.strftime("%A, %d. %B %Y %I:%M%p")
     return {
         "statusCode": 200,
         "body": json.dumps({
-            "message": "hello world",
+            "message": "hello world?",
+            "time":current_time,
             # "location": ip.text.replace("\n", "")
         }),
     }
