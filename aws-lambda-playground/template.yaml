@@ -30,6 +30,28 @@ Resources:
             Path: /hello
             Method: get
 
+  ## not yet configured part as events rule
+  SchedulingRun: 
+    Type: AWS::Events::Rule
+    Properties: 
+      Description: "Move Files every Monday at specific time"
+      EventPattern: 
+        source: 
+          - "custom.aws-lambda-playground"
+        detail-type:
+          - transaction   
+        detail: 
+          result: 
+            - "approved"
+      State: "ENABLED"
+      Targets: 
+        - 
+          Arn: 
+            Fn::GetAtt: 
+              - "atmConsumerCase1Fn"
+              - "Arn"
+          Id: "atmConsumerTarget1"
+
 Outputs:
   # ServerlessRestApi is an implicit API created out of Events key under Serverless::Function
   # Find out more about other implicit resources you can reference within SAM
@@ -43,3 +65,5 @@ Outputs:
   MoveFileFunctionIamRole:
     Description: "Implicit IAM Role created for Hello World function"
     Value: !GetAtt MoveFileFunctionRole.Arn
+
+  

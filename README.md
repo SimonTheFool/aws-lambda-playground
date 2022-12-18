@@ -1,6 +1,10 @@
 # aws-lambda-playground
 Try to deploy AWS Lambda with version control in GitHub
 
+18/11/2022 20:33
+1. events::rule added in `template.yaml` but not configured
+2. `test.json` added but not configured.
+
 12/11/2022 22:52
 done tasks:
 1. modify function folder name and path in `template.yaml` file
